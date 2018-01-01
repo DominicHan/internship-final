@@ -19,17 +19,9 @@ public class Const {
 	
 	public static String userAgent="Mozilla";
 	
-	public static String default_Profile=BASE_PATH+"/img/logo.jpg";
-	
 	public static String LAST_REFERER = "LAST_REFERER";
 
 	public static int COOKIE_TIMEOUT= 30*24*60*60;
 
-	
-	  @Autowired(required = true)
-	  public void setBasePath(@Value("${favorites.base.path}")String basePath) {
-		  Const.BASE_PATH = basePath;
-	  }
-	
-	
+
 }

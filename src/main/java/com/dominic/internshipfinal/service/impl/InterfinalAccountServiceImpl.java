@@ -16,4 +16,14 @@ public class InterfinalAccountServiceImpl implements InterfinalAccountService {
     public InterfinalAccount getAccount(int id) {
         return interfinalAccountMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public InterfinalAccount getAccountByAccountNo(String account) {
+        return interfinalAccountMapper.selectByAccountNo(account);
+    }
+
+    @Override
+    public int addAccount(InterfinalAccount account) {
+        return interfinalAccountMapper.insertSelective(account);
+    }
 }

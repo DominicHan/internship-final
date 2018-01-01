@@ -7,9 +7,7 @@ import com.dominic.internshipfinal.domain.result.Response;
 import com.dominic.internshipfinal.domain.result.ResponseData;
 import com.dominic.internshipfinal.service.InterfinalAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +25,24 @@ public class InterfinalAccountController {
         return new ResponseData(ExceptionMsg.SUCCESS, interfinalAccount);
     }
 
-
+    /**
+     * 注册
+     */
+    @RequestMapping(value = "/regist", method = RequestMethod.POST)
+    @LoggerManage(description="注册")
+    public Response create(InterfinalAccount account) {
+        try {
+            InterfinalAccount registUser = interfinalAccountService.getAccountByAccountNo(account.getAccount());
+            if (null != registUser) {
+                return new Response(ExceptionMsg.AccountUsed);
+            } else {
+                interfinalAccountService.addAccount(account);
+            }
+        } catch (Exception e) {
+            //logger.error("create user failed, ", e);
+            return new Response(ExceptionMsg.FAILED);
+        }
+        return new Response(ExceptionMsg.SUCCESS);
+    }
 
 }

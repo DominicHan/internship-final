@@ -11,6 +11,8 @@ public interface InterfinalAccountMapper {
 
     InterfinalAccount selectByPrimaryKey(Integer id);
 
+    InterfinalAccount selectByAccountNo(String account);
+
     int updateByPrimaryKeySelective(InterfinalAccount record);
 
     int updateByPrimaryKey(InterfinalAccount record);
