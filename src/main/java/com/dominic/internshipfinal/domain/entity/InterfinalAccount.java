@@ -1,4 +1,4 @@
-package com.dominic.internshipfinal.entity;
+package com.dominic.internshipfinal.domain.entity;
 
 import java.util.Date;
 
@@ -71,5 +71,10 @@ public class InterfinalAccount {
 
     public void setToken(String token) {
         this.token = token == null ? null : token.trim();
+    }
+
+    @Override
+    public String toString() {
+        return id + account + nick;
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dominic.internshipfinal.dao.InterfinalAccountMapper" >
-  <resultMap id="BaseResultMap" type="com.dominic.internshipfinal.entity.InterfinalAccount" >
+  <resultMap id="BaseResultMap" type="com.dominic.internshipfinal.domain.entity.InterfinalAccount" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="account" property="account" jdbcType="VARCHAR" />
     <result column="account_password" property="accountPassword" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
     delete from interfinal_account
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.dominic.internshipfinal.entity.InterfinalAccount" >
+  <insert id="insert" parameterType="com.dominic.internshipfinal.domain.entity.InterfinalAccount" >
     insert into interfinal_account (id, account, account_password, 
       nick, mobile, create_time, 
       token)
@@ -31,7 +31,7 @@
       #{nick,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{token,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.dominic.internshipfinal.entity.InterfinalAccount" >
+  <insert id="insertSelective" parameterType="com.dominic.internshipfinal.domain.entity.InterfinalAccount" >
     insert into interfinal_account
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dominic.internshipfinal.entity.InterfinalAccount" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.dominic.internshipfinal.domain.entity.InterfinalAccount" >
     update interfinal_account
     <set >
       <if test="account != null" >
@@ -104,7 +104,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dominic.internshipfinal.entity.InterfinalAccount" >
+  <update id="updateByPrimaryKey" parameterType="com.dominic.internshipfinal.domain.entity.InterfinalAccount" >
     update interfinal_account
     set account = #{account,jdbcType=VARCHAR},
       account_password = #{accountPassword,jdbcType=VARCHAR},

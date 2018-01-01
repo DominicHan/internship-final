@@ -1,7 +1,7 @@
 package com.dominic.internshipfinal.service.impl;
 
 import com.dominic.internshipfinal.dao.InterfinalAccountMapper;
-import com.dominic.internshipfinal.entity.InterfinalAccount;
+import com.dominic.internshipfinal.domain.entity.InterfinalAccount;
 import com.dominic.internshipfinal.service.InterfinalAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
