@@ -5,13 +5,17 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="account" property="account" jdbcType="VARCHAR" />
     <result column="account_password" property="accountPassword" jdbcType="VARCHAR" />
+    <result column="gestures_password" property="gesturesPassword" jdbcType="VARCHAR" />
     <result column="nick" property="nick" jdbcType="VARCHAR" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="store_pic_url" property="storePicUrl" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
     <result column="token" property="token" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, account, account_password, nick, mobile, create_time, token
+    id, account, account_password, gestures_password, nick, mobile, store_pic_url, create_time, 
+    role_id, token
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -25,10 +29,12 @@
   </delete>
   <insert id="insert" parameterType="com.dominic.internshipfinal.domain.entity.InterfinalAccount" >
     insert into interfinal_account (id, account, account_password, 
-      nick, mobile, create_time, 
+      gestures_password, nick, mobile, 
+      store_pic_url, create_time, role_id, 
       token)
     values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{accountPassword,jdbcType=VARCHAR}, 
-      #{nick,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{gesturesPassword,jdbcType=VARCHAR}, #{nick,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{storePicUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{roleId,jdbcType=INTEGER}, 
       #{token,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dominic.internshipfinal.domain.entity.InterfinalAccount" >
@@ -43,14 +49,23 @@
       <if test="accountPassword != null" >
         account_password,
       </if>
+      <if test="gesturesPassword != null" >
+        gestures_password,
+      </if>
       <if test="nick != null" >
         nick,
       </if>
       <if test="mobile != null" >
         mobile,
       </if>
+      <if test="storePicUrl != null" >
+        store_pic_url,
+      </if>
       <if test="createTime != null" >
         create_time,
+      </if>
+      <if test="roleId != null" >
+        role_id,
       </if>
       <if test="token != null" >
         token,
@@ -66,14 +81,23 @@
       <if test="accountPassword != null" >
         #{accountPassword,jdbcType=VARCHAR},
       </if>
+      <if test="gesturesPassword != null" >
+        #{gesturesPassword,jdbcType=VARCHAR},
+      </if>
       <if test="nick != null" >
         #{nick,jdbcType=VARCHAR},
       </if>
       <if test="mobile != null" >
         #{mobile,jdbcType=VARCHAR},
       </if>
+      <if test="storePicUrl != null" >
+        #{storePicUrl,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
       </if>
       <if test="token != null" >
         #{token,jdbcType=VARCHAR},
@@ -89,14 +113,23 @@
       <if test="accountPassword != null" >
         account_password = #{accountPassword,jdbcType=VARCHAR},
       </if>
+      <if test="gesturesPassword != null" >
+        gestures_password = #{gesturesPassword,jdbcType=VARCHAR},
+      </if>
       <if test="nick != null" >
         nick = #{nick,jdbcType=VARCHAR},
       </if>
       <if test="mobile != null" >
         mobile = #{mobile,jdbcType=VARCHAR},
       </if>
+      <if test="storePicUrl != null" >
+        store_pic_url = #{storePicUrl,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=INTEGER},
       </if>
       <if test="token != null" >
         token = #{token,jdbcType=VARCHAR},
@@ -108,9 +141,12 @@
     update interfinal_account
     set account = #{account,jdbcType=VARCHAR},
       account_password = #{accountPassword,jdbcType=VARCHAR},
+      gestures_password = #{gesturesPassword,jdbcType=VARCHAR},
       nick = #{nick,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=VARCHAR},
+      store_pic_url = #{storePicUrl,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
+      role_id = #{roleId,jdbcType=INTEGER},
       token = #{token,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

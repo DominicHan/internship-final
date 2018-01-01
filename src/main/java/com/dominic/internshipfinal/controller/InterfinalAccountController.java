@@ -7,10 +7,8 @@ import com.dominic.internshipfinal.domain.result.Response;
 import com.dominic.internshipfinal.domain.result.ResponseData;
 import com.dominic.internshipfinal.service.InterfinalAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,5 +26,7 @@ public class InterfinalAccountController {
         InterfinalAccount interfinalAccount = interfinalAccountService.getAccount(Integer.parseInt(str));
         return new ResponseData(ExceptionMsg.SUCCESS, interfinalAccount);
     }
+
+
 
 }

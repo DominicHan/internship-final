@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dominic.internshipfinal.dao.MineMapper" >
+  <resultMap id="BaseResultMap" type="com.dominic.internshipfinal.domain.entity.Mine" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="store_url" property="storeUrl" jdbcType="VARCHAR" />
+    <result column="store_title" property="storeTitle" jdbcType="VARCHAR" />
+    <result column="release_date" property="releaseDate" jdbcType="TIMESTAMP" />
+    <result column="store_describe" property="storeDescribe" jdbcType="VARCHAR" />
+    <result column="store_praise" property="storePraise" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, store_url, store_title, release_date, store_describe, store_praise
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mine
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mine
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dominic.internshipfinal.domain.entity.Mine" >
+    insert into mine (id, store_url, store_title, 
+      release_date, store_describe, store_praise
+      )
+    values (#{id,jdbcType=INTEGER}, #{storeUrl,jdbcType=VARCHAR}, #{storeTitle,jdbcType=VARCHAR}, 
+      #{releaseDate,jdbcType=TIMESTAMP}, #{storeDescribe,jdbcType=VARCHAR}, #{storePraise,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dominic.internshipfinal.domain.entity.Mine" >
+    insert into mine
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="storeUrl != null" >
+        store_url,
+      </if>
+      <if test="storeTitle != null" >
+        store_title,
+      </if>
+      <if test="releaseDate != null" >
+        release_date,
+      </if>
+      <if test="storeDescribe != null" >
+        store_describe,
+      </if>
+      <if test="storePraise != null" >
+        store_praise,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="storeUrl != null" >
+        #{storeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="storeTitle != null" >
+        #{storeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseDate != null" >
+        #{releaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeDescribe != null" >
+        #{storeDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="storePraise != null" >
+        #{storePraise,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dominic.internshipfinal.domain.entity.Mine" >
+    update mine
+    <set >
+      <if test="storeUrl != null" >
+        store_url = #{storeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="storeTitle != null" >
+        store_title = #{storeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseDate != null" >
+        release_date = #{releaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeDescribe != null" >
+        store_describe = #{storeDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="storePraise != null" >
+        store_praise = #{storePraise,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dominic.internshipfinal.domain.entity.Mine" >
+    update mine
+    set store_url = #{storeUrl,jdbcType=VARCHAR},
+      store_title = #{storeTitle,jdbcType=VARCHAR},
+      release_date = #{releaseDate,jdbcType=TIMESTAMP},
+      store_describe = #{storeDescribe,jdbcType=VARCHAR},
+      store_praise = #{storePraise,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

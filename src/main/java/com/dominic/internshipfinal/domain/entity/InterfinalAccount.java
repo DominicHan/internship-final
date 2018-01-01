@@ -9,11 +9,17 @@ public class InterfinalAccount {
 
     private String accountPassword;
 
+    private String gesturesPassword;
+
     private String nick;
 
     private String mobile;
 
+    private String storePicUrl;
+
     private Date createTime;
+
+    private Integer roleId;
 
     private String token;
 
@@ -41,6 +47,14 @@ public class InterfinalAccount {
         this.accountPassword = accountPassword == null ? null : accountPassword.trim();
     }
 
+    public String getGesturesPassword() {
+        return gesturesPassword;
+    }
+
+    public void setGesturesPassword(String gesturesPassword) {
+        this.gesturesPassword = gesturesPassword == null ? null : gesturesPassword.trim();
+    }
+
     public String getNick() {
         return nick;
     }
@@ -57,6 +71,14 @@ public class InterfinalAccount {
         this.mobile = mobile == null ? null : mobile.trim();
     }
 
+    public String getStorePicUrl() {
+        return storePicUrl;
+    }
+
+    public void setStorePicUrl(String storePicUrl) {
+        this.storePicUrl = storePicUrl == null ? null : storePicUrl.trim();
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -65,16 +87,19 @@ public class InterfinalAccount {
         this.createTime = createTime;
     }
 
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
     public String getToken() {
         return token;
     }
 
     public void setToken(String token) {
         this.token = token == null ? null : token.trim();
-    }
-
-    @Override
-    public String toString() {
-        return id + account + nick;
     }
 }
