@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 public class InterfinalAccountController {
@@ -18,7 +20,7 @@ public class InterfinalAccountController {
     InterfinalAccountService interfinalAccountService;
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    @LoggerManage(description="属性修改")
+    @LoggerManage(description = "属性修改")
     public ResponseData getAccount(HttpServletRequest request, HttpServletResponse response) {
         String str = request.getParameter("id");
         InterfinalAccount interfinalAccount = interfinalAccountService.getAccount(Integer.parseInt(str));
@@ -29,13 +31,15 @@ public class InterfinalAccountController {
      * 注册
      */
     @RequestMapping(value = "/regist", method = RequestMethod.POST)
-    @LoggerManage(description="注册")
+    @LoggerManage(description = "注册")
     public Response create(InterfinalAccount account) {
         try {
             InterfinalAccount registUser = interfinalAccountService.getAccountByAccountNo(account.getAccount());
             if (null != registUser) {
                 return new Response(ExceptionMsg.AccountUsed);
             } else {
+                //SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+                account.setCreateTime(new Date());
                 interfinalAccountService.addAccount(account);
             }
         } catch (Exception e) {
@@ -45,4 +49,20 @@ public class InterfinalAccountController {
         return new Response(ExceptionMsg.SUCCESS);
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @LoggerManage(description = "登陆")
+    public ResponseData login(InterfinalAccount account, HttpServletResponse response) {
+        try {
+            InterfinalAccount loginAccount = interfinalAccountService.getAccountByAccountNo(account.getAccount());
+            if (loginAccount == null) {
+                return new ResponseData(ExceptionMsg.LoginNameNotExists);
+            } else if (!loginAccount.getAccountPassword().equals(account.getAccountPassword())) {
+                return new ResponseData(ExceptionMsg.LoginNameOrPassWordError);
+            }
+            return new ResponseData(ExceptionMsg.SUCCESS);
+        } catch (Exception e) {
+            //logger.error("login failed, ", e);
+            return new ResponseData(ExceptionMsg.FAILED);
+        }
+    }
 }
