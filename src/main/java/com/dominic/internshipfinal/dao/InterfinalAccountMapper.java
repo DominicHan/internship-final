@@ -16,4 +16,5 @@ public interface InterfinalAccountMapper {
     int updateByPrimaryKeySelective(InterfinalAccount record);
 
     int updateByPrimaryKey(InterfinalAccount record);
+    void updateGpByAccount(InterfinalAccount record);
 }

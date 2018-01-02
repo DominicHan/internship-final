@@ -157,4 +157,10 @@
     from interfinal_account
     where account = #{account,jdbcType=VARCHAR}
   </select>
+
+  <update id="updateGpByAccount" parameterType="com.dominic.internshipfinal.domain.entity.InterfinalAccount" >
+    update interfinal_account
+    set gestures_password = #{gesturesPassword,jdbcType=VARCHAR}
+    where account = #{account,jdbcType=VARCHAR}
+  </update>
 </mapper>

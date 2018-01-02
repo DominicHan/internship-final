@@ -26,4 +26,9 @@ public class InterfinalAccountServiceImpl implements InterfinalAccountService {
     public int addAccount(InterfinalAccount account) {
         return interfinalAccountMapper.insertSelective(account);
     }
+
+    @Override
+    public void setGestures(InterfinalAccount account) {
+        interfinalAccountMapper.updateGpByAccount(account);
+    }
 }

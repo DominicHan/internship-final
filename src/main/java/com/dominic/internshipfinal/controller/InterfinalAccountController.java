@@ -65,4 +65,20 @@ public class InterfinalAccountController {
             return new ResponseData(ExceptionMsg.FAILED);
         }
     }
+
+    @RequestMapping(value = "/setGestures", method = RequestMethod.POST)
+    @LoggerManage(description = "设置手势密码")
+    public Response setGestures(InterfinalAccount account) {
+        try {
+            InterfinalAccount loginAccount = interfinalAccountService.getAccountByAccountNo(account.getAccount());
+            if (loginAccount == null) {
+                return new Response(ExceptionMsg.LoginNameNotExists);
+            }
+            loginAccount.setGesturesPassword(account.getGesturesPassword());
+            interfinalAccountService.setGestures(loginAccount);
+        } catch (Exception e) {
+            return new Response(ExceptionMsg.FAILED);
+        }
+        return new Response(ExceptionMsg.SUCCESS);
+    }
 }
