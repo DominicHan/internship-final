@@ -2,6 +2,8 @@ package com.dominic.internshipfinal.dao;
 
 import com.dominic.internshipfinal.domain.entity.GoodsType1;
 
+import java.util.List;
+
 public interface GoodsType1Mapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface GoodsType1Mapper {
     int updateByPrimaryKeySelective(GoodsType1 record);
 
     int updateByPrimaryKey(GoodsType1 record);
+
+    List<GoodsType1> selectAll();
 }

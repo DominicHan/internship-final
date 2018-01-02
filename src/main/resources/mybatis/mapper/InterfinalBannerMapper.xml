@@ -79,4 +79,9 @@
       click_url = #{clickUrl,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select *
+    from interfinal_banner
+  </select>
 </mapper>
