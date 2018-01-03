@@ -1,18 +1,18 @@
 package com.dominic.internshipfinal.domain.entity;
 
 public class ShoppingCart {
-    private Integer accountId;
+    private String account;
 
     private Integer goodsId;
 
     private Integer purchaseQuantity;
 
-    public Integer getAccountId() {
-        return accountId;
+    public String getAccountId() {
+        return account;
     }
 
-    public void setAccountId(Integer accountId) {
-        this.accountId = accountId;
+    public void setAccountId(String accountId) {
+        this.account = accountId;
     }
 
     public Integer getGoodsId() {

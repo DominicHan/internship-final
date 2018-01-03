@@ -14,7 +14,7 @@ public enum ExceptionMsg {
     UserNameLengthLimit("000106","用户名长度超限"),
     LoginNameNotExists("000107","该用户未注册"),
     UserNameSame("000108","新用户名与原用户名一致"),
-
+    TooManyGoods("000109","购物车中商品太多啦!!!"),
     FileEmpty("000400","上传文件为空"),
     LimitPictureSize("000401","图片大小必须小于2M"),
     LimitPictureType("000402","图片格式必须为'jpg'、'png'、'jpge'、'gif'、'bmp'")
