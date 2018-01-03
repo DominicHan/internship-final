@@ -55,4 +55,10 @@
     set goods_type_name = #{goodsTypeName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectNameByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select goods_type_name
+    from goods_type_2
+    where id = #{id,jdbcType=INTEGER}
+  </select>
 </mapper>

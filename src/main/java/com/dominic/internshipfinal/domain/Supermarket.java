@@ -9,6 +9,9 @@ public class Supermarket {
     private String title_pic;
     private List<Goods> goods_list;
 
+    public Supermarket() {
+    }
+
     public Supermarket(String title_pic, List<Goods> goods_list) {
         this.title_pic = title_pic;
         this.goods_list = goods_list;

@@ -68,9 +68,4 @@
       goods_type_pic_url = #{goodsTypePicUrl,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
-  <select id="selectAll" resultMap="BaseResultMap" >
-    select *
-    from goods_type_1
-  </select>
 </mapper>
