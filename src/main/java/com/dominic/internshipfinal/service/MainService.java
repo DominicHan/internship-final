@@ -16,5 +16,4 @@ public interface MainService {
     String getGoodsType2(int id);
     // 获取商品列表
     List<Goods> getGoods();
-
 }

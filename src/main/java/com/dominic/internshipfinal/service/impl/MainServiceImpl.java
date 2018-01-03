@@ -9,7 +9,9 @@ import com.dominic.internshipfinal.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MainServiceImpl implements MainService {
@@ -46,4 +48,5 @@ public class MainServiceImpl implements MainService {
     public List<Goods> getGoods() {
         return goodsMapper.selectAll();
     }
+
 }

@@ -22,7 +22,7 @@ public class MainController {
     @Autowired
     MainService mainService;
 
-    @RequestMapping(value = "/main/businessAffairs", method = RequestMethod.GET)
+    @RequestMapping(value = "/main/businessAffairs", method = RequestMethod.POST)
     @LoggerManage(description = "首页商务数据")
     public ResponseData businessAffairs() {
         List<InterfinalBanner> banners = mainService.getBanners();
@@ -30,7 +30,7 @@ public class MainController {
         return new ResponseData(ExceptionMsg.SUCCESS, new BusinessAffairs(banners, goods_type));
     }
 
-    @RequestMapping(value = "/main/supermarket", method = RequestMethod.GET)
+    @RequestMapping(value = "/main/supermarket", method = RequestMethod.POST)
     @LoggerManage(description = "首页超市数据")
     public ResponseData supermarket() {
         Supermarket supermarket = new Supermarket();
@@ -39,5 +39,4 @@ public class MainController {
         supermarket.setGoods_list(goods);
         return new ResponseData(ExceptionMsg.SUCCESS, supermarket);
     }
-
 }

@@ -1,240 +1,254 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dominic.internshipfinal.dao.GoodsMapper" >
-  <resultMap id="BaseResultMap" type="com.dominic.internshipfinal.domain.entity.Goods" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
-    <result column="goods_pic_url" property="goodsPicUrl" jdbcType="VARCHAR" />
-    <result column="goods_prices" property="goodsPrices" jdbcType="INTEGER" />
-    <result column="goods_original_prices" property="goodsOriginalPrices" jdbcType="VARCHAR" />
-    <result column="high_praise_num" property="highPraiseNum" jdbcType="INTEGER" />
-    <result column="high_praise_probability" property="highPraiseProbability" jdbcType="VARCHAR" />
-    <result column="sales" property="sales" jdbcType="INTEGER" />
-    <result column="new_product" property="newProduct" jdbcType="VARCHAR" />
-    <result column="clothes_length" property="clothesLength" jdbcType="VARCHAR" />
-    <result column="area" property="area" jdbcType="VARCHAR" />
-    <result column="applicable_people" property="applicablePeople" jdbcType="VARCHAR" />
-    <result column="active_tags" property="activeTags" jdbcType="VARCHAR" />
-    <result column="store_name" property="storeName" jdbcType="VARCHAR" />
-    <result column="brand" property="brand" jdbcType="VARCHAR" />
-    <result column="get_model" property="getModel" jdbcType="VARCHAR" />
-    <result column="inventory" property="inventory" jdbcType="INTEGER" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, goods_name, goods_pic_url, goods_prices, goods_original_prices, high_praise_num, 
-    high_praise_probability, sales, new_product, clothes_length, area, applicable_people, 
-    active_tags, store_name, brand, get_model, inventory
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from goods
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from goods
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.dominic.internshipfinal.domain.entity.Goods" >
-    insert into goods (id, goods_name, goods_pic_url, 
-      goods_prices, goods_original_prices, high_praise_num, 
-      high_praise_probability, sales, new_product, 
-      clothes_length, area, applicable_people, 
-      active_tags, store_name, brand, 
-      get_model, inventory)
-    values (#{id,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPicUrl,jdbcType=VARCHAR}, 
-      #{goodsPrices,jdbcType=INTEGER}, #{goodsOriginalPrices,jdbcType=VARCHAR}, #{highPraiseNum,jdbcType=INTEGER}, 
-      #{highPraiseProbability,jdbcType=VARCHAR}, #{sales,jdbcType=INTEGER}, #{newProduct,jdbcType=VARCHAR}, 
-      #{clothesLength,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{applicablePeople,jdbcType=VARCHAR}, 
-      #{activeTags,jdbcType=VARCHAR}, #{storeName,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
-      #{getModel,jdbcType=VARCHAR}, #{inventory,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.dominic.internshipfinal.domain.entity.Goods" >
-    insert into goods
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="goodsName != null" >
-        goods_name,
-      </if>
-      <if test="goodsPicUrl != null" >
-        goods_pic_url,
-      </if>
-      <if test="goodsPrices != null" >
-        goods_prices,
-      </if>
-      <if test="goodsOriginalPrices != null" >
-        goods_original_prices,
-      </if>
-      <if test="highPraiseNum != null" >
-        high_praise_num,
-      </if>
-      <if test="highPraiseProbability != null" >
-        high_praise_probability,
-      </if>
-      <if test="sales != null" >
-        sales,
-      </if>
-      <if test="newProduct != null" >
-        new_product,
-      </if>
-      <if test="clothesLength != null" >
-        clothes_length,
-      </if>
-      <if test="area != null" >
-        area,
-      </if>
-      <if test="applicablePeople != null" >
-        applicable_people,
-      </if>
-      <if test="activeTags != null" >
-        active_tags,
-      </if>
-      <if test="storeName != null" >
-        store_name,
-      </if>
-      <if test="brand != null" >
-        brand,
-      </if>
-      <if test="getModel != null" >
-        get_model,
-      </if>
-      <if test="inventory != null" >
-        inventory,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="goodsName != null" >
-        #{goodsName,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsPicUrl != null" >
-        #{goodsPicUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsPrices != null" >
-        #{goodsPrices,jdbcType=INTEGER},
-      </if>
-      <if test="goodsOriginalPrices != null" >
-        #{goodsOriginalPrices,jdbcType=VARCHAR},
-      </if>
-      <if test="highPraiseNum != null" >
-        #{highPraiseNum,jdbcType=INTEGER},
-      </if>
-      <if test="highPraiseProbability != null" >
-        #{highPraiseProbability,jdbcType=VARCHAR},
-      </if>
-      <if test="sales != null" >
-        #{sales,jdbcType=INTEGER},
-      </if>
-      <if test="newProduct != null" >
-        #{newProduct,jdbcType=VARCHAR},
-      </if>
-      <if test="clothesLength != null" >
-        #{clothesLength,jdbcType=VARCHAR},
-      </if>
-      <if test="area != null" >
-        #{area,jdbcType=VARCHAR},
-      </if>
-      <if test="applicablePeople != null" >
-        #{applicablePeople,jdbcType=VARCHAR},
-      </if>
-      <if test="activeTags != null" >
-        #{activeTags,jdbcType=VARCHAR},
-      </if>
-      <if test="storeName != null" >
-        #{storeName,jdbcType=VARCHAR},
-      </if>
-      <if test="brand != null" >
-        #{brand,jdbcType=VARCHAR},
-      </if>
-      <if test="getModel != null" >
-        #{getModel,jdbcType=VARCHAR},
-      </if>
-      <if test="inventory != null" >
-        #{inventory,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dominic.internshipfinal.domain.entity.Goods" >
-    update goods
-    <set >
-      <if test="goodsName != null" >
-        goods_name = #{goodsName,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsPicUrl != null" >
+<mapper namespace="com.dominic.internshipfinal.dao.GoodsMapper">
+    <resultMap id="BaseResultMap" type="com.dominic.internshipfinal.domain.entity.Goods">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="goods_name" property="goodsName" jdbcType="VARCHAR"/>
+        <result column="goods_pic_url" property="goodsPicUrl" jdbcType="VARCHAR"/>
+        <result column="goods_prices" property="goodsPrices" jdbcType="INTEGER"/>
+        <result column="goods_original_prices" property="goodsOriginalPrices" jdbcType="VARCHAR"/>
+        <result column="high_praise_num" property="highPraiseNum" jdbcType="INTEGER"/>
+        <result column="high_praise_probability" property="highPraiseProbability" jdbcType="VARCHAR"/>
+        <result column="sales" property="sales" jdbcType="INTEGER"/>
+        <result column="new_product" property="newProduct" jdbcType="VARCHAR"/>
+        <result column="clothes_length" property="clothesLength" jdbcType="VARCHAR"/>
+        <result column="area" property="area" jdbcType="VARCHAR"/>
+        <result column="applicable_people" property="applicablePeople" jdbcType="VARCHAR"/>
+        <result column="active_tags" property="activeTags" jdbcType="VARCHAR"/>
+        <result column="store_name" property="storeName" jdbcType="VARCHAR"/>
+        <result column="brand" property="brand" jdbcType="VARCHAR"/>
+        <result column="get_model" property="getModel" jdbcType="VARCHAR"/>
+        <result column="inventory" property="inventory" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, goods_name, goods_pic_url, goods_prices, goods_original_prices, high_praise_num,
+        high_praise_probability, sales, new_product, clothes_length, area, applicable_people,
+        active_tags, store_name, brand, get_model, inventory
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from goods
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from goods
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.dominic.internshipfinal.domain.entity.Goods">
+        insert into goods (id, goods_name, goods_pic_url,
+        goods_prices, goods_original_prices, high_praise_num,
+        high_praise_probability, sales, new_product,
+        clothes_length, area, applicable_people,
+        active_tags, store_name, brand,
+        get_model, inventory)
+        values (#{id,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPicUrl,jdbcType=VARCHAR},
+        #{goodsPrices,jdbcType=INTEGER}, #{goodsOriginalPrices,jdbcType=VARCHAR}, #{highPraiseNum,jdbcType=INTEGER},
+        #{highPraiseProbability,jdbcType=VARCHAR}, #{sales,jdbcType=INTEGER}, #{newProduct,jdbcType=VARCHAR},
+        #{clothesLength,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{applicablePeople,jdbcType=VARCHAR},
+        #{activeTags,jdbcType=VARCHAR}, #{storeName,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR},
+        #{getModel,jdbcType=VARCHAR}, #{inventory,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.dominic.internshipfinal.domain.entity.Goods">
+        insert into goods
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="goodsName != null">
+                goods_name,
+            </if>
+            <if test="goodsPicUrl != null">
+                goods_pic_url,
+            </if>
+            <if test="goodsPrices != null">
+                goods_prices,
+            </if>
+            <if test="goodsOriginalPrices != null">
+                goods_original_prices,
+            </if>
+            <if test="highPraiseNum != null">
+                high_praise_num,
+            </if>
+            <if test="highPraiseProbability != null">
+                high_praise_probability,
+            </if>
+            <if test="sales != null">
+                sales,
+            </if>
+            <if test="newProduct != null">
+                new_product,
+            </if>
+            <if test="clothesLength != null">
+                clothes_length,
+            </if>
+            <if test="area != null">
+                area,
+            </if>
+            <if test="applicablePeople != null">
+                applicable_people,
+            </if>
+            <if test="activeTags != null">
+                active_tags,
+            </if>
+            <if test="storeName != null">
+                store_name,
+            </if>
+            <if test="brand != null">
+                brand,
+            </if>
+            <if test="getModel != null">
+                get_model,
+            </if>
+            <if test="inventory != null">
+                inventory,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="goodsName != null">
+                #{goodsName,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsPicUrl != null">
+                #{goodsPicUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsPrices != null">
+                #{goodsPrices,jdbcType=INTEGER},
+            </if>
+            <if test="goodsOriginalPrices != null">
+                #{goodsOriginalPrices,jdbcType=VARCHAR},
+            </if>
+            <if test="highPraiseNum != null">
+                #{highPraiseNum,jdbcType=INTEGER},
+            </if>
+            <if test="highPraiseProbability != null">
+                #{highPraiseProbability,jdbcType=VARCHAR},
+            </if>
+            <if test="sales != null">
+                #{sales,jdbcType=INTEGER},
+            </if>
+            <if test="newProduct != null">
+                #{newProduct,jdbcType=VARCHAR},
+            </if>
+            <if test="clothesLength != null">
+                #{clothesLength,jdbcType=VARCHAR},
+            </if>
+            <if test="area != null">
+                #{area,jdbcType=VARCHAR},
+            </if>
+            <if test="applicablePeople != null">
+                #{applicablePeople,jdbcType=VARCHAR},
+            </if>
+            <if test="activeTags != null">
+                #{activeTags,jdbcType=VARCHAR},
+            </if>
+            <if test="storeName != null">
+                #{storeName,jdbcType=VARCHAR},
+            </if>
+            <if test="brand != null">
+                #{brand,jdbcType=VARCHAR},
+            </if>
+            <if test="getModel != null">
+                #{getModel,jdbcType=VARCHAR},
+            </if>
+            <if test="inventory != null">
+                #{inventory,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dominic.internshipfinal.domain.entity.Goods">
+        update goods
+        <set>
+            <if test="goodsName != null">
+                goods_name = #{goodsName,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsPicUrl != null">
+                goods_pic_url = #{goodsPicUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsPrices != null">
+                goods_prices = #{goodsPrices,jdbcType=INTEGER},
+            </if>
+            <if test="goodsOriginalPrices != null">
+                goods_original_prices = #{goodsOriginalPrices,jdbcType=VARCHAR},
+            </if>
+            <if test="highPraiseNum != null">
+                high_praise_num = #{highPraiseNum,jdbcType=INTEGER},
+            </if>
+            <if test="highPraiseProbability != null">
+                high_praise_probability = #{highPraiseProbability,jdbcType=VARCHAR},
+            </if>
+            <if test="sales != null">
+                sales = #{sales,jdbcType=INTEGER},
+            </if>
+            <if test="newProduct != null">
+                new_product = #{newProduct,jdbcType=VARCHAR},
+            </if>
+            <if test="clothesLength != null">
+                clothes_length = #{clothesLength,jdbcType=VARCHAR},
+            </if>
+            <if test="area != null">
+                area = #{area,jdbcType=VARCHAR},
+            </if>
+            <if test="applicablePeople != null">
+                applicable_people = #{applicablePeople,jdbcType=VARCHAR},
+            </if>
+            <if test="activeTags != null">
+                active_tags = #{activeTags,jdbcType=VARCHAR},
+            </if>
+            <if test="storeName != null">
+                store_name = #{storeName,jdbcType=VARCHAR},
+            </if>
+            <if test="brand != null">
+                brand = #{brand,jdbcType=VARCHAR},
+            </if>
+            <if test="getModel != null">
+                get_model = #{getModel,jdbcType=VARCHAR},
+            </if>
+            <if test="inventory != null">
+                inventory = #{inventory,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dominic.internshipfinal.domain.entity.Goods">
+        update goods
+        set goods_name = #{goodsName,jdbcType=VARCHAR},
         goods_pic_url = #{goodsPicUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsPrices != null" >
         goods_prices = #{goodsPrices,jdbcType=INTEGER},
-      </if>
-      <if test="goodsOriginalPrices != null" >
         goods_original_prices = #{goodsOriginalPrices,jdbcType=VARCHAR},
-      </if>
-      <if test="highPraiseNum != null" >
         high_praise_num = #{highPraiseNum,jdbcType=INTEGER},
-      </if>
-      <if test="highPraiseProbability != null" >
         high_praise_probability = #{highPraiseProbability,jdbcType=VARCHAR},
-      </if>
-      <if test="sales != null" >
         sales = #{sales,jdbcType=INTEGER},
-      </if>
-      <if test="newProduct != null" >
         new_product = #{newProduct,jdbcType=VARCHAR},
-      </if>
-      <if test="clothesLength != null" >
         clothes_length = #{clothesLength,jdbcType=VARCHAR},
-      </if>
-      <if test="area != null" >
         area = #{area,jdbcType=VARCHAR},
-      </if>
-      <if test="applicablePeople != null" >
         applicable_people = #{applicablePeople,jdbcType=VARCHAR},
-      </if>
-      <if test="activeTags != null" >
         active_tags = #{activeTags,jdbcType=VARCHAR},
-      </if>
-      <if test="storeName != null" >
         store_name = #{storeName,jdbcType=VARCHAR},
-      </if>
-      <if test="brand != null" >
         brand = #{brand,jdbcType=VARCHAR},
-      </if>
-      <if test="getModel != null" >
         get_model = #{getModel,jdbcType=VARCHAR},
-      </if>
-      <if test="inventory != null" >
-        inventory = #{inventory,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.dominic.internshipfinal.domain.entity.Goods" >
-    update goods
-    set goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_pic_url = #{goodsPicUrl,jdbcType=VARCHAR},
-      goods_prices = #{goodsPrices,jdbcType=INTEGER},
-      goods_original_prices = #{goodsOriginalPrices,jdbcType=VARCHAR},
-      high_praise_num = #{highPraiseNum,jdbcType=INTEGER},
-      high_praise_probability = #{highPraiseProbability,jdbcType=VARCHAR},
-      sales = #{sales,jdbcType=INTEGER},
-      new_product = #{newProduct,jdbcType=VARCHAR},
-      clothes_length = #{clothesLength,jdbcType=VARCHAR},
-      area = #{area,jdbcType=VARCHAR},
-      applicable_people = #{applicablePeople,jdbcType=VARCHAR},
-      active_tags = #{activeTags,jdbcType=VARCHAR},
-      store_name = #{storeName,jdbcType=VARCHAR},
-      brand = #{brand,jdbcType=VARCHAR},
-      get_model = #{getModel,jdbcType=VARCHAR},
-      inventory = #{inventory,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        inventory = #{inventory,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 
-  <select id="selectAll" resultMap="BaseResultMap">
-    select *
-    from goods
-  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from goods
+    </select>
+
+    <select id="selectScreening" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from goods
+        <where>
+            <if test="area != null">area = #{area}</if>
+            <if test="brand != null">and brand=#{brand}</if>
+            <if test="clothesLength != null">and clothes_length=#{clothesLength}</if>
+            <if test="applicablePeople != null">and applicable_people=#{applicablePeople}</if>
+            <if test="getModel != null">and get_model=#{getModel}</if>
+            <if test="lowPrices != null and highPrices != null">and goods_prices <![CDATA[>=]]> #{lowPrices,jdbcType=INTEGER} AND
+                goods_prices <![CDATA[<=]]> #{highPrices,jdbcType=INTEGER}</if>
+        </where>
+    </select>
 </mapper>

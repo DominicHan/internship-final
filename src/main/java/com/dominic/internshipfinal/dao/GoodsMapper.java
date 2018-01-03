@@ -4,6 +4,7 @@ package com.dominic.internshipfinal.dao;
 import com.dominic.internshipfinal.domain.entity.Goods;
 
 import java.util.List;
+import java.util.Map;
 
 public interface GoodsMapper {
     int deleteByPrimaryKey(Integer id);
@@ -19,4 +20,6 @@ public interface GoodsMapper {
     int updateByPrimaryKey(Goods record);
 
     List<Goods> selectAll();
+
+    List<Goods> selectScreening(Map map);
 }
