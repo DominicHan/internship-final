@@ -13,8 +13,6 @@ public class Mine {
 
     private String storeDescribe;
 
-    private String storePraise;
-
     public Integer getId() {
         return id;
     }
@@ -53,13 +51,5 @@ public class Mine {
 
     public void setStoreDescribe(String storeDescribe) {
         this.storeDescribe = storeDescribe == null ? null : storeDescribe.trim();
-    }
-
-    public String getStorePraise() {
-        return storePraise;
-    }
-
-    public void setStorePraise(String storePraise) {
-        this.storePraise = storePraise == null ? null : storePraise.trim();
     }
 }

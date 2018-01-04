@@ -7,10 +7,9 @@
     <result column="store_title" property="storeTitle" jdbcType="VARCHAR" />
     <result column="release_date" property="releaseDate" jdbcType="TIMESTAMP" />
     <result column="store_describe" property="storeDescribe" jdbcType="VARCHAR" />
-    <result column="store_praise" property="storePraise" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, store_url, store_title, release_date, store_describe, store_praise
+    id, store_url, store_title, release_date, store_describe
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -24,11 +23,9 @@
   </delete>
   <insert id="insert" parameterType="com.dominic.internshipfinal.domain.entity.Mine" >
     insert into mine (id, store_url, store_title, 
-      release_date, store_describe, store_praise
-      )
+      release_date, store_describe)
     values (#{id,jdbcType=INTEGER}, #{storeUrl,jdbcType=VARCHAR}, #{storeTitle,jdbcType=VARCHAR}, 
-      #{releaseDate,jdbcType=TIMESTAMP}, #{storeDescribe,jdbcType=VARCHAR}, #{storePraise,jdbcType=VARCHAR}
-      )
+      #{releaseDate,jdbcType=TIMESTAMP}, #{storeDescribe,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dominic.internshipfinal.domain.entity.Mine" >
     insert into mine
@@ -48,9 +45,6 @@
       <if test="storeDescribe != null" >
         store_describe,
       </if>
-      <if test="storePraise != null" >
-        store_praise,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -67,9 +61,6 @@
       </if>
       <if test="storeDescribe != null" >
         #{storeDescribe,jdbcType=VARCHAR},
-      </if>
-      <if test="storePraise != null" >
-        #{storePraise,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -88,9 +79,6 @@
       <if test="storeDescribe != null" >
         store_describe = #{storeDescribe,jdbcType=VARCHAR},
       </if>
-      <if test="storePraise != null" >
-        store_praise = #{storePraise,jdbcType=VARCHAR},
-      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -99,8 +87,7 @@
     set store_url = #{storeUrl,jdbcType=VARCHAR},
       store_title = #{storeTitle,jdbcType=VARCHAR},
       release_date = #{releaseDate,jdbcType=TIMESTAMP},
-      store_describe = #{storeDescribe,jdbcType=VARCHAR},
-      store_praise = #{storePraise,jdbcType=VARCHAR}
+      store_describe = #{storeDescribe,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
