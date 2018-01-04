@@ -1,8 +1,10 @@
 package com.dominic.internshipfinal.controller;
 
 import com.dominic.internshipfinal.comm.aop.LoggerManage;
+import com.dominic.internshipfinal.domain.MineInfo;
 import com.dominic.internshipfinal.domain.result.ExceptionMsg;
 import com.dominic.internshipfinal.domain.result.Response;
+import com.dominic.internshipfinal.domain.result.ResponseData;
 import com.dominic.internshipfinal.service.MineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,5 +44,13 @@ public class MineController {
         } catch (Exception e) {
             return new Response(ExceptionMsg.FAILED);
         }
+    }
+
+    @RequestMapping(value = "/mine/getMineInfoById", method = RequestMethod.POST)
+    @LoggerManage(description = "评论消息")
+    public ResponseData getMineInfoById(HttpServletRequest request) {
+        String mineInfoId = request.getParameter("id");
+        MineInfo mineInfo = mineService.getMineInfoById(Integer.parseInt(mineInfoId));
+        return new ResponseData(ExceptionMsg.SUCCESS, mineInfo);
     }
 }

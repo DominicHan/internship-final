@@ -1,8 +1,10 @@
 package com.dominic.internshipfinal.service.impl;
 
 import com.dominic.internshipfinal.dao.MineCommentsMapper;
+import com.dominic.internshipfinal.dao.MineMapper;
 import com.dominic.internshipfinal.dao.MinePraiseMapper;
 import com.dominic.internshipfinal.domain.MineInfo;
+import com.dominic.internshipfinal.domain.entity.Mine;
 import com.dominic.internshipfinal.domain.entity.MineComments;
 import com.dominic.internshipfinal.domain.entity.MinePraise;
 import com.dominic.internshipfinal.service.MineService;
@@ -20,6 +22,9 @@ public class MineServiceImpl implements MineService {
 
     @Autowired
     MineCommentsMapper mineCommentsMapper;
+
+    @Autowired
+    MineMapper mineMapper;
 
     @Override
     public void setPraise(int mineInfoId, String account) {
@@ -42,7 +47,18 @@ public class MineServiceImpl implements MineService {
 
     @Override
     public MineInfo getMineInfoById(int id) {
-        return null;
+        MineInfo mineInfo = new MineInfo();
+        Mine mine = mineMapper.selectByPrimaryKey(id);
+        mineInfo.setMine(mine);
+
+        /*List<MinePraise> minePraiseList = minePraiseMapper.selectById(id);
+        List<MineComments> mineCommentsList = mineCommentsMapper.selectById(id);
+        mineInfo.setMine(mine);
+        if (minePraiseList != null && !minePraiseList.isEmpty())
+            mineInfo.setMinePraiseList(minePraiseList);
+        if (mineCommentsList != null && !mineCommentsList.isEmpty())
+            mineInfo.setMineComments(mineCommentsList);*/
+        return mineInfo;
     }
 
     @Override

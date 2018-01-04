@@ -44,4 +44,10 @@
       </if>
     </trim>
   </insert>
+
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select *
+    from mine_comments
+    where mine_info_id = #{mine_info_id,jdbcType=INTEGER}
+  </select>
 </mapper>

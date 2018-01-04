@@ -1,20 +1,36 @@
 package com.dominic.internshipfinal.domain;
 
 import com.dominic.internshipfinal.domain.entity.Mine;
-import com.dominic.internshipfinal.domain.entity.MineComments;
-import com.dominic.internshipfinal.domain.entity.MinePraise;
 
 import java.util.List;
 
 public class MineInfo {
+
     private Mine mine;
-    private List<MinePraise> minePraiseList;
-    private List<MineComments> mineComments;
+    private List<String> minePraiseList;
+    private List<MineCommentsInfo> mineComments;
     private List<String> picList;
+    private int isPraise;
+
+    public int getIsPraise() {
+        return isPraise;
+    }
+
+    public void setIsPraise(int isPraise) {
+        this.isPraise = isPraise;
+    }
 
     public MineInfo() {}
 
-    public MineInfo(Mine mine, List<MinePraise> minePraiseList, List<MineComments> mineComments, List<String> picList) {
+    public MineInfo(Mine mine, List<String> minePraiseList, List<MineCommentsInfo> mineComments, List<String> picList, int isPraise) {
+        this.mine = mine;
+        this.minePraiseList = minePraiseList;
+        this.mineComments = mineComments;
+        this.picList = picList;
+        this.isPraise = isPraise;
+    }
+
+    public MineInfo(Mine mine, List<String> minePraiseList, List<MineCommentsInfo> mineComments, List<String> picList) {
         this.mine = mine;
         this.minePraiseList = minePraiseList;
         this.mineComments = mineComments;
@@ -29,19 +45,19 @@ public class MineInfo {
         this.mine = mine;
     }
 
-    public List<MinePraise> getMinePraiseList() {
+    public List<String> getMinePraiseList() {
         return minePraiseList;
     }
 
-    public void setMinePraiseList(List<MinePraise> minePraiseList) {
+    public void setMinePraiseList(List<String> minePraiseList) {
         this.minePraiseList = minePraiseList;
     }
 
-    public List<MineComments> getMineComments() {
+    public List<MineCommentsInfo> getMineComments() {
         return mineComments;
     }
 
-    public void setMineComments(List<MineComments> mineComments) {
+    public void setMineComments(List<MineCommentsInfo> mineComments) {
         this.mineComments = mineComments;
     }
 
