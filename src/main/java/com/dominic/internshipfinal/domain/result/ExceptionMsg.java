@@ -5,7 +5,8 @@ public enum ExceptionMsg {
 	SUCCESS("000000", "操作成功"),
 	FAILED("999999","操作失败"),
     ParamError("000001", "参数错误！"),
-
+    PassWordEmpty("000002", "密码为空！"),
+    NickEmpty("000003", "昵称为空！"),
     LoginNameOrPassWordError("000100", "用户名或者密码错误！"),
     AccountUsed("000101","该账号已被注册"),
     UserNameUsed("000102","该登录名称已存在"),

@@ -7,6 +7,7 @@ import com.dominic.internshipfinal.domain.result.Response;
 import com.dominic.internshipfinal.domain.result.ResponseData;
 import com.dominic.internshipfinal.service.InterfinalAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +38,10 @@ public class InterfinalAccountController {
             InterfinalAccount registUser = interfinalAccountService.getAccountByAccountNo(account.getAccount());
             if (null != registUser) {
                 return new Response(ExceptionMsg.AccountUsed);
+            } else if (StringUtils.isEmpty(account.getAccountPassword())) {
+                return new Response(ExceptionMsg.PassWordEmpty);
+            } else if (StringUtils.isEmpty(account.getNick())) {
+                return new Response(ExceptionMsg.NickEmpty);
             } else {
                 //SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
                 account.setCreateTime(new Date());
