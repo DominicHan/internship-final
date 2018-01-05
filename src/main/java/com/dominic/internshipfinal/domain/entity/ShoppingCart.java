@@ -1,6 +1,8 @@
 package com.dominic.internshipfinal.domain.entity;
 
-public class ShoppingCart {
+import java.io.Serializable;
+
+public class ShoppingCart implements Serializable {
     private String account;
 
     private Integer goodsId;

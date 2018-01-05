@@ -1,6 +1,8 @@
 package com.dominic.internshipfinal.domain.entity;
 
-public class GoodsType1 {
+import java.io.Serializable;
+
+public class GoodsType1 implements Serializable {
     private Integer id;
 
     private String goodsTypeName;

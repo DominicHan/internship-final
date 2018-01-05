@@ -1,8 +1,9 @@
 package com.dominic.internshipfinal.domain.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Mine {
+public class Mine implements Serializable {
     private Integer id;
 
     private String storeUrl;

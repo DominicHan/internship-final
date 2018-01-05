@@ -1,8 +1,9 @@
 package com.dominic.internshipfinal.domain.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MineComments {
+public class MineComments implements Serializable {
     private Integer mineInfoId;
 
     private String account;

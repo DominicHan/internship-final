@@ -1,8 +1,9 @@
 package com.dominic.internshipfinal.domain.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class InterfinalAccount {
+public class InterfinalAccount implements Serializable {
     private Integer id;
 
     private String account;

@@ -1,6 +1,8 @@
 package com.dominic.internshipfinal.domain.entity;
 
-public class GetModel {
+import java.io.Serializable;
+
+public class GetModel implements Serializable {
     private Integer id;
 
     private String modelName;

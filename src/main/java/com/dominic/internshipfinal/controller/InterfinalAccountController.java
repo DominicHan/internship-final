@@ -7,9 +7,12 @@ import com.dominic.internshipfinal.domain.result.Response;
 import com.dominic.internshipfinal.domain.result.ResponseData;
 import com.dominic.internshipfinal.service.InterfinalAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
@@ -20,7 +23,21 @@ public class InterfinalAccountController {
     @Autowired
     InterfinalAccountService interfinalAccountService;
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
+
+    @RequestMapping(value = "/test/get1", method = RequestMethod.POST)
+    @LoggerManage(description = "属性修改")
+    public ResponseData get1(HttpServletRequest request, HttpServletResponse response) {
+        String str = request.getParameter("id");
+        InterfinalAccount interfinalAccount = interfinalAccountService.getAccount(Integer.parseInt(str));
+        ValueOperations<String,Object> vo = redisTemplate.opsForValue();
+        vo.set("test", "gthy123");
+        System.out.println(vo.get("test"));
+        return new ResponseData(ExceptionMsg.SUCCESS, interfinalAccount);
+    }
+
+    @RequestMapping(value = "/test/get", method = RequestMethod.GET)
     @LoggerManage(description = "属性修改")
     public ResponseData getAccount(HttpServletRequest request, HttpServletResponse response) {
         String str = request.getParameter("id");

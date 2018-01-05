@@ -1,6 +1,8 @@
 package com.dominic.internshipfinal.domain.entity;
 
-public class InterfinalRole {
+import java.io.Serializable;
+
+public class InterfinalRole implements Serializable {
     private Integer id;
 
     private String roleName;

@@ -1,6 +1,8 @@
 package com.dominic.internshipfinal.domain.entity;
 
-public class InterfinalBanner {
+import java.io.Serializable;
+
+public class InterfinalBanner implements Serializable {
     private Integer id;
 
     private String title;
