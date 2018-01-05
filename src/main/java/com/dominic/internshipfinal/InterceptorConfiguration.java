@@ -10,10 +10,8 @@ public class InterceptorConfiguration extends WebMvcConfigurerAdapter{
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        System.out.println("inter1111");
         registry.addInterceptor(new BankInterceptor()).addPathPatterns("/test/get1");
         //registry.addInterceptor(new BankInterceptor()).excludePathPatterns());
-        System.out.println("inter6");
         super.addInterceptors(registry);
     }
 }
