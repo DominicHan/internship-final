@@ -1,35 +1,46 @@
 package com.dominic.internshipfinal.domain;
 
 import com.dominic.internshipfinal.domain.entity.Goods;
+import com.dominic.internshipfinal.domain.entity.GoodsType2;
 
 import java.util.List;
 
 public class Supermarket {
 
-    private String title_pic;
-    private List<Goods> goods_list;
+    private String titlePic;
+    private List<Goods> goodsList;
+    private List<GoodsType2> typeList;
 
     public Supermarket() {
     }
 
-    public Supermarket(String title_pic, List<Goods> goods_list) {
-        this.title_pic = title_pic;
-        this.goods_list = goods_list;
+    public Supermarket(String titlePic, List<Goods> goodsList, List<GoodsType2> typeList) {
+        this.titlePic = titlePic;
+        this.goodsList = goodsList;
+        this.typeList = typeList;
     }
 
-    public String getTitle_pic() {
-        return title_pic;
+    public String getTitlePic() {
+        return titlePic;
     }
 
-    public void setTitle_pic(String title_pic) {
-        this.title_pic = title_pic;
+    public void setTitlePic(String titlePic) {
+        this.titlePic = titlePic;
     }
 
-    public List<Goods> getGoods_list() {
-        return goods_list;
+    public List<Goods> getGoodsList() {
+        return goodsList;
     }
 
-    public void setGoods_list(List<Goods> goods_list) {
-        this.goods_list = goods_list;
+    public void setGoodsList(List<Goods> goodsList) {
+        this.goodsList = goodsList;
+    }
+
+    public List<GoodsType2> getTypeList() {
+        return typeList;
+    }
+
+    public void setTypeList(List<GoodsType2> typeList) {
+        this.typeList = typeList;
     }
 }

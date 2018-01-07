@@ -55,6 +55,8 @@ public class InterfinalAccountController {
             InterfinalAccount registUser = interfinalAccountService.getAccountByAccountNo(account.getAccount());
             if (null != registUser) {
                 return new Response(ExceptionMsg.AccountUsed);
+            } else if (StringUtils.isEmpty(account.getAccount())) {
+                return new Response(ExceptionMsg.AccountEmpty);
             } else if (StringUtils.isEmpty(account.getAccountPassword())) {
                 return new Response(ExceptionMsg.PassWordEmpty);
             } else if (StringUtils.isEmpty(account.getNick())) {
@@ -102,5 +104,22 @@ public class InterfinalAccountController {
             return new Response(ExceptionMsg.FAILED);
         }
         return new Response(ExceptionMsg.SUCCESS);
+    }
+
+    @RequestMapping(value = "/checkGestures", method = RequestMethod.POST)
+    @LoggerManage(description = "校验手势密码")
+    public Response checkGestures(InterfinalAccount account) {
+        try {
+            InterfinalAccount loginAccount = interfinalAccountService.getAccountByAccountNo(account.getAccount());
+            if (loginAccount == null) {
+                return new Response(ExceptionMsg.LoginNameNotExists);
+            } else if (!account.getGesturesPassword().equals(loginAccount.getGesturesPassword())) {
+                return new Response(ExceptionMsg.GesturesPasswordError);
+            } else {
+                return new Response(ExceptionMsg.SUCCESS);
+            }
+        } catch (Exception e) {
+            return new Response(ExceptionMsg.FAILED);
+        }
     }
 }

@@ -5,6 +5,7 @@ import com.dominic.internshipfinal.domain.BusinessAffairs;
 import com.dominic.internshipfinal.domain.Supermarket;
 import com.dominic.internshipfinal.domain.entity.Goods;
 import com.dominic.internshipfinal.domain.entity.GoodsType1;
+import com.dominic.internshipfinal.domain.entity.GoodsType2;
 import com.dominic.internshipfinal.domain.entity.InterfinalBanner;
 import com.dominic.internshipfinal.domain.result.ExceptionMsg;
 import com.dominic.internshipfinal.domain.result.ResponseData;
@@ -34,9 +35,11 @@ public class MainController {
     @LoggerManage(description = "首页超市数据")
     public ResponseData supermarket() {
         Supermarket supermarket = new Supermarket();
-        supermarket.setTitle_pic("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514954557562&di=5baa3318ef880813537f2fa7291cb017&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01acaf5722af116ac7253812b32635.jpg");
+        supermarket.setTitlePic("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514954557562&di=5baa3318ef880813537f2fa7291cb017&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01acaf5722af116ac7253812b32635.jpg");
         List<Goods> goods = mainService.getGoods();
-        supermarket.setGoods_list(goods);
+        List<GoodsType2> types = mainService.getGoodsType2();
+        supermarket.setGoodsList(goods);
+        supermarket.setTypeList(types);
         return new ResponseData(ExceptionMsg.SUCCESS, supermarket);
     }
 }

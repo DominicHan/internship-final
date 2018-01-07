@@ -40,8 +40,8 @@ public class MainServiceImpl implements MainService {
     }
 
     @Override
-    public String getGoodsType2(int id) {
-        return goodsType2Mapper.selectNameByPrimaryKey(id);
+    public List<GoodsType2> getGoodsType2() {
+        return goodsType2Mapper.selectAll();
     }
 
     @Override

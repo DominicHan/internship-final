@@ -13,7 +13,7 @@ public interface MainService {
     // 获取首页商品分类数据
     List<GoodsType1> getGoodsType1();
     // 根据id获取商品2级类型
-    String getGoodsType2(int id);
+    List<GoodsType2> getGoodsType2();
     // 获取商品列表
     List<Goods> getGoods();
 }

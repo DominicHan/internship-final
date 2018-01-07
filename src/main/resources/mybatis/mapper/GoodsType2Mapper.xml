@@ -61,4 +61,8 @@
     from goods_type_2
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from goods_type_2
+  </select>
 </mapper>
