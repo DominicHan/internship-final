@@ -9,6 +9,7 @@ public enum ExceptionMsg {
     NickEmpty("000003", "昵称为空！"),
     AccountEmpty("000004", "账号为空！"),
     GesturesPasswordError("000005", "手势密码有误！"),
+    GesturesPasswordEmpty("000006", "未设置手势密码"),
     LoginNameOrPassWordError("000100", "用户名或者密码错误！"),
     AccountUsed("000101","该账号已被注册"),
     UserNameUsed("000102","该登录名称已存在"),

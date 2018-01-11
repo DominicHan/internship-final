@@ -82,6 +82,8 @@ public class InterfinalAccountController {
                 return new ResponseData(ExceptionMsg.LoginNameNotExists);
             } else if (!loginAccount.getAccountPassword().equals(account.getAccountPassword())) {
                 return new ResponseData(ExceptionMsg.LoginNameOrPassWordError);
+            }  else if (StringUtils.isEmpty(loginAccount.getGesturesPassword())) {
+                return new ResponseData(ExceptionMsg.GesturesPasswordEmpty);
             }
             return new ResponseData(ExceptionMsg.SUCCESS);
         } catch (Exception e) {
