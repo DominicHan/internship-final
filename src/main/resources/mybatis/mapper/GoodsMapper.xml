@@ -19,6 +19,7 @@
         <result column="brand" property="brand" jdbcType="VARCHAR"/>
         <result column="get_model" property="getModel" jdbcType="VARCHAR"/>
         <result column="inventory" property="inventory" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
         id, goods_name, goods_pic_url, goods_prices, goods_original_prices, high_praise_num,

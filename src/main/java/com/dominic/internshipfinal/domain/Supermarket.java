@@ -8,13 +8,13 @@ import java.util.List;
 public class Supermarket {
 
     private String titlePic;
-    private List<Goods> goodsList;
-    private List<GoodsType2> typeList;
+    private List<GoodsList> goodsList;
+    private List<String> typeList;
 
     public Supermarket() {
     }
 
-    public Supermarket(String titlePic, List<Goods> goodsList, List<GoodsType2> typeList) {
+    public Supermarket(String titlePic, List<GoodsList> goodsList, List<String> typeList) {
         this.titlePic = titlePic;
         this.goodsList = goodsList;
         this.typeList = typeList;
@@ -28,19 +28,40 @@ public class Supermarket {
         this.titlePic = titlePic;
     }
 
-    public List<Goods> getGoodsList() {
+    public List<GoodsList> getGoodsList() {
         return goodsList;
     }
 
-    public void setGoodsList(List<Goods> goodsList) {
+    public void setGoodsList(List<GoodsList> goodsList) {
         this.goodsList = goodsList;
     }
 
-    public List<GoodsType2> getTypeList() {
+    public List<String> getTypeList() {
         return typeList;
     }
 
-    public void setTypeList(List<GoodsType2> typeList) {
+    public void setTypeList(List<String> typeList) {
         this.typeList = typeList;
+    }
+
+    public static class GoodsList {
+        private String typeName;
+        private List<Goods> list;
+
+        public String getTypeName() {
+            return typeName;
+        }
+
+        public void setTypeName(String typeName) {
+            this.typeName = typeName;
+        }
+
+        public List<Goods> getList() {
+            return list;
+        }
+
+        public void setList(List<Goods> list) {
+            this.list = list;
+        }
     }
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -37,9 +38,22 @@ public class MainController {
         Supermarket supermarket = new Supermarket();
         supermarket.setTitlePic("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514954557562&di=5baa3318ef880813537f2fa7291cb017&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01acaf5722af116ac7253812b32635.jpg");
         List<Goods> goods = mainService.getGoods();
-        List<GoodsType2> types = mainService.getGoodsType2();
-        supermarket.setGoodsList(goods);
+        List<String> types = mainService.getGoodsType2();
+        List<Supermarket.GoodsList> lists = new ArrayList<Supermarket.GoodsList>();
+        for (String attribute: types) {
+            Supermarket.GoodsList list = new Supermarket.GoodsList();
+            List<Goods> good = new ArrayList<>();
+            list.setTypeName(attribute);
+            for (Goods attribute1: goods) {
+                if (attribute.equals(attribute1.getType())) {
+                    good.add(attribute1);
+                }
+            }
+            list.setList(good);
+            lists.add(list);
+        }
         supermarket.setTypeList(types);
+        supermarket.setGoodsList(lists);
         return new ResponseData(ExceptionMsg.SUCCESS, supermarket);
     }
 }

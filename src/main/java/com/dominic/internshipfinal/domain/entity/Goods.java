@@ -37,6 +37,8 @@ public class Goods implements Serializable {
 
     private Integer inventory;
 
+    private String type;
+
     public Integer getId() {
         return id;
     }
@@ -171,5 +173,13 @@ public class Goods implements Serializable {
 
     public void setInventory(Integer inventory) {
         this.inventory = inventory;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

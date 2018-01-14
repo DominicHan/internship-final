@@ -19,5 +19,5 @@ public interface GoodsType2Mapper {
     int updateByPrimaryKey(GoodsType2 record);
 
     String selectNameByPrimaryKey(Integer id);
-    List<GoodsType2> selectAll();
+    List<String> selectAll();
 }

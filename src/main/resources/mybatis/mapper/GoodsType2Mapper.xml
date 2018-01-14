@@ -62,7 +62,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
-  <select id="selectAll" resultMap="BaseResultMap">
-    select * from goods_type_2
+  <select id="selectAll" resultType="java.lang.String">
+    select goods_type_name from goods_type_2
   </select>
 </mapper>

@@ -40,7 +40,7 @@ public class MainServiceImpl implements MainService {
     }
 
     @Override
-    public List<GoodsType2> getGoodsType2() {
+    public List<String> getGoodsType2() {
         return goodsType2Mapper.selectAll();
     }
 
