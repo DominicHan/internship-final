@@ -2,6 +2,7 @@ package com.dominic.internshipfinal.controller;
 
 import com.dominic.internshipfinal.comm.aop.LoggerManage;
 import com.dominic.internshipfinal.domain.entity.Goods;
+import com.dominic.internshipfinal.domain.entity.InterfinalAccount;
 import com.dominic.internshipfinal.domain.result.ExceptionMsg;
 import com.dominic.internshipfinal.domain.result.ResponseData;
 import com.dominic.internshipfinal.service.ClassificationService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,5 +52,19 @@ public class ClassificationController {
         }
         List<Goods> goods = classificationService.getGoods(map1);
         return new ResponseData(ExceptionMsg.SUCCESS, goods);
+    }
+
+    @RequestMapping(value = "/main/getBrand", method = RequestMethod.POST)
+    @LoggerManage(description = "获取品牌")
+    public ResponseData getBrand(HttpServletRequest request, HttpServletResponse response) {
+        List<String> brands = classificationService.getBrand();
+        return new ResponseData(ExceptionMsg.SUCCESS, brands);
+    }
+
+    @RequestMapping(value = "/main/getModel", method = RequestMethod.POST)
+    @LoggerManage(description = "获取领型")
+    public ResponseData getModel(HttpServletRequest request, HttpServletResponse response) {
+        List<String> models = classificationService.getModel();
+        return new ResponseData(ExceptionMsg.SUCCESS, models);
     }
 }

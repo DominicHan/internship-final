@@ -7,4 +7,6 @@ import java.util.Map;
 
 public interface ClassificationService {
     List<Goods> getGoods(Map map);
+    List<String> getBrand();
+    List<String> getModel();
 }

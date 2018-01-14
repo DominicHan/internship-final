@@ -55,4 +55,7 @@
     set model_name = #{modelName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultType="java.lang.String">
+    select model_name from get_model
+  </select>
 </mapper>

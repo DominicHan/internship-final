@@ -55,4 +55,7 @@
     set brand_name = #{brandName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultType="java.lang.String">
+    select brand_name from brand
+  </select>
 </mapper>
