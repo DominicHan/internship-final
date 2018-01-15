@@ -127,7 +127,11 @@ public class MineController {
                     isPraise = 1;
                 }
                 List<MineComments> commentsList = mineService.getComments(id);
-                mineInfo.setMineComments(commentsList);
+                List<MineCommentsInfo> mineCommentsInfos = new ArrayList<>();
+                for (MineComments minelist : commentsList) {
+                    mineCommentsInfos.add(new MineCommentsInfo(mineService.getNick(minelist.getAccount()), minelist.getSubmitContent()));
+                }
+                mineInfo.setMineComments(mineCommentsInfos);
                 mineInfo.setMinePraiseList(nickList);
                 mineInfo.setMine(mine);
                 mineInfo.setPicList(picList);
