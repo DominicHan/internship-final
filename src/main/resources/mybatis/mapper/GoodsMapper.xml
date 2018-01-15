@@ -243,13 +243,14 @@
         <include refid="Base_Column_List"/>
         from goods
         <where>
-            <if test="area != null">area = #{area}</if>
-            <if test="brand != null">and brand=#{brand}</if>
-            <if test="clothesLength != null">and clothes_length=#{clothesLength}</if>
-            <if test="applicablePeople != null">and applicable_people=#{applicablePeople}</if>
-            <if test="getModel != null">and get_model=#{getModel}</if>
+            <if test="area != null and area != ''">area = #{area}</if>
+            <if test="brand != null and brand != ''">and brand=#{brand}</if>
+            <if test="clothesLength != null and clothesLength != ''">and clothes_length=#{clothesLength}</if>
+            <if test="applicablePeople != null and applicablePeople != ''">and applicable_people=#{applicablePeople}</if>
+            <if test="getModel != null and getModel != ''">and get_model=#{getModel}</if>
             <if test="lowPrices != null and highPrices != null">and goods_prices <![CDATA[>=]]> #{lowPrices,jdbcType=INTEGER} AND
                 goods_prices <![CDATA[<=]]> #{highPrices,jdbcType=INTEGER}</if>
+            <if test="keyWord != null and keyWord != ''">and goods_name like concat(concat('%', #{keyWord}),'%')</if>
         </where>
     </select>
 </mapper>
