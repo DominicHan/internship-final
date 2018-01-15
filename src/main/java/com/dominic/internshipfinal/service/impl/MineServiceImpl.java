@@ -65,6 +65,11 @@ public class MineServiceImpl implements MineService {
     }
 
     @Override
+    public List<MineComments> getComments(int id) {
+        return mineCommentsMapper.selectById(id);
+    }
+
+    @Override
     public String getNick(String account) {
         return interfinalAccountMapper.selectByAccountNo(account).getNick();
     }

@@ -1,8 +1,10 @@
 package com.dominic.internshipfinal.controller;
 
 import com.dominic.internshipfinal.comm.aop.LoggerManage;
+import com.dominic.internshipfinal.domain.MineCommentsInfo;
 import com.dominic.internshipfinal.domain.MineInfo;
 import com.dominic.internshipfinal.domain.entity.Mine;
+import com.dominic.internshipfinal.domain.entity.MineComments;
 import com.dominic.internshipfinal.domain.entity.MinePraise;
 import com.dominic.internshipfinal.domain.result.ExceptionMsg;
 import com.dominic.internshipfinal.domain.result.Response;
@@ -70,7 +72,12 @@ public class MineController {
             String account = request.getParameter("account");
             String content = request.getParameter("content");
             mineService.setComments(Integer.parseInt(mineInfoId), account, content);
-            return new Response(ExceptionMsg.SUCCESS);
+            List<MineCommentsInfo> mineInfo = new ArrayList<>();
+            List<MineComments> commentsList = mineService.getComments(Integer.parseInt(mineInfoId));
+            for (MineComments minelist : commentsList) {
+                mineInfo.add(new MineCommentsInfo(mineService.getNick(minelist.getAccount()), minelist.getSubmitContent()));
+            }
+            return new ResponseData(ExceptionMsg.SUCCESS, mineInfo);
         } catch (Exception e) {
             return new Response(ExceptionMsg.FAILED);
         }

@@ -2,6 +2,7 @@ package com.dominic.internshipfinal.service;
 
 import com.dominic.internshipfinal.domain.MineInfo;
 import com.dominic.internshipfinal.domain.entity.Mine;
+import com.dominic.internshipfinal.domain.entity.MineComments;
 import com.dominic.internshipfinal.domain.entity.MinePraise;
 
 import java.util.List;
@@ -17,6 +18,8 @@ public interface MineService {
     List<Mine> mineMapper();
     // 获取给消息点赞的昵称
     List<MinePraise> getPraise(int id);
+    // 获取给消息的评论数据
+    List<MineComments> getComments(int id);
     // 根据账号获取昵称
     String getNick(String account);
     // 查看该账号是否已经点赞该消息
