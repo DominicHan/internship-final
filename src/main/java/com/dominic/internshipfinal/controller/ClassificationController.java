@@ -1,6 +1,7 @@
 package com.dominic.internshipfinal.controller;
 
 import com.dominic.internshipfinal.comm.aop.LoggerManage;
+import com.dominic.internshipfinal.domain.BrandAndModel;
 import com.dominic.internshipfinal.domain.entity.Goods;
 import com.dominic.internshipfinal.domain.entity.InterfinalAccount;
 import com.dominic.internshipfinal.domain.result.ExceptionMsg;
@@ -66,5 +67,16 @@ public class ClassificationController {
     public ResponseData getModel(HttpServletRequest request, HttpServletResponse response) {
         List<String> models = classificationService.getModel();
         return new ResponseData(ExceptionMsg.SUCCESS, models);
+    }
+
+    @RequestMapping(value = "/main/getBrandAndModel", method = RequestMethod.POST)
+    @LoggerManage(description = "获取品牌和领型")
+    public ResponseData getBrandAndModel(HttpServletRequest request, HttpServletResponse response) {
+        List<String> brands = classificationService.getBrand();
+        List<String> models = classificationService.getModel();
+        BrandAndModel brandAndModel = new BrandAndModel();
+        brandAndModel.setBrandList(brands);
+        brandAndModel.setGetModelList(models);
+        return new ResponseData(ExceptionMsg.SUCCESS, brandAndModel);
     }
 }
