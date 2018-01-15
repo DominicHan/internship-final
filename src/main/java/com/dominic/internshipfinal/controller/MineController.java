@@ -23,6 +23,8 @@ import java.util.List;
 @RestController
 public class MineController {
 
+    private List<String> picList = new ArrayList<>();
+
     @Autowired
     MineService mineService;
 
@@ -103,8 +105,38 @@ public class MineController {
 
     @RequestMapping(value = "/mine/getMineInfo", method = RequestMethod.POST)
     @LoggerManage(description = "消息列表")
-    public ResponseData getMineInfo(HttpServletRequest request) {
-        List<Mine> mines = mineService.mineMapper();
-        return new ResponseData(ExceptionMsg.SUCCESS, mines);
+    public Response getMineInfo(HttpServletRequest request) {
+        try {
+            picList.add("http://img.zcool.cn/community/01138f55427d210000019ae9c5bc9e.jpg");
+            picList.add("http://img.zcool.cn/community/01138f55427d210000019ae9c5bc9e.jpg");
+            picList.add("http://img.zcool.cn/community/01138f55427d210000019ae9c5bc9e.jpg");
+            String account = request.getParameter("account");
+            List<MineInfo> mineInfos = new ArrayList<>();
+            List<Mine> mines = mineService.mineMapper();
+            for (Mine mine : mines) {
+                int isPraise = 0;
+                MineInfo mineInfo = new MineInfo();
+                int id = mine.getId();
+                List<String> nickList = new ArrayList<>();
+                List<MinePraise> minePraiseList = mineService.getPraise(id);
+                for (MinePraise minelist : minePraiseList) {
+                    nickList.add(mineService.getNick(minelist.getAccount()));
+                }
+                MinePraise minePraise = new MinePraise(id, account);
+                if (mineService.checkPraise(minePraise) != null) {
+                    isPraise = 1;
+                }
+                List<MineComments> commentsList = mineService.getComments(id);
+                mineInfo.setMineComments(commentsList);
+                mineInfo.setMinePraiseList(nickList);
+                mineInfo.setMine(mine);
+                mineInfo.setPicList(picList);
+                mineInfo.setIsPraise(isPraise);
+                mineInfos.add(mineInfo);
+            }
+            return new ResponseData(ExceptionMsg.SUCCESS, mineInfos);
+        } catch (Exception e) {
+            return new Response(ExceptionMsg.FAILED);
+        }
     }
 }
