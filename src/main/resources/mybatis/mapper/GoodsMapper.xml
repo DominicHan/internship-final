@@ -251,6 +251,10 @@
             <if test="lowPrices != null and highPrices != null">and goods_prices <![CDATA[>=]]> #{lowPrices,jdbcType=INTEGER} AND
                 goods_prices <![CDATA[<=]]> #{highPrices,jdbcType=INTEGER}</if>
             <if test="keyWord != null and keyWord != ''">and goods_name like concat(concat('%', #{keyWord}),'%')</if>
+            <if test="newProduct != null and newProduct != ''">new_product = 1</if>
         </where>
+        <if test="comp != null and comp != ''">order by id</if>
+        <if test="salesVolume != null and salesVolume != ''">order by sales DESC</if>
+        <if test="commentNumber != null and commentNumber != ''">order by high_praise_num DESC</if>
     </select>
 </mapper>

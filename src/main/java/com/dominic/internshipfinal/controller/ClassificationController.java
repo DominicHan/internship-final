@@ -49,11 +49,23 @@ public class ClassificationController {
                 map1.put("highPrices", price[1]);
             }
             map1.put(paramName, paramValue);
+            if (paramName.equals("composite")) {
+                if (paramValue.equals("综合排序")) {
+                    map1.put("comp", "综合排序");
+                } else if (paramValue.equals("销量优先")) {
+                    map1.put("salesVolume", "销量优先");
+                } else if (paramValue.equals("评论数从高到低")) {
+                    map1.put("commentNumber", "评论数从高到低");
+                } else if (paramValue.equals("新品")) {
+                    map1.put("newProduct", "新品");
+                }
+            }
             System.out.println(paramName + paramValue);
         }
         List<Goods> goods = classificationService.getGoods(map1);
         return new ResponseData(ExceptionMsg.SUCCESS, goods);
     }
+
 
     @RequestMapping(value = "/main/getBrand", method = RequestMethod.POST)
     @LoggerManage(description = "获取品牌")
