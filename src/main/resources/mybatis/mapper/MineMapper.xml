@@ -90,4 +90,8 @@
       store_describe = #{storeDescribe,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select * from mine
+  </select>
 </mapper>

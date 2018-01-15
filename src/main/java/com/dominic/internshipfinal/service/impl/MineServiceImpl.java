@@ -1,5 +1,6 @@
 package com.dominic.internshipfinal.service.impl;
 
+import com.dominic.internshipfinal.dao.InterfinalAccountMapper;
 import com.dominic.internshipfinal.dao.MineCommentsMapper;
 import com.dominic.internshipfinal.dao.MineMapper;
 import com.dominic.internshipfinal.dao.MinePraiseMapper;
@@ -26,6 +27,9 @@ public class MineServiceImpl implements MineService {
     @Autowired
     MineMapper mineMapper;
 
+    @Autowired
+    InterfinalAccountMapper interfinalAccountMapper;
+
     @Override
     public void setPraise(int mineInfoId, String account) {
         MinePraise minePraise = new MinePraise();
@@ -46,23 +50,28 @@ public class MineServiceImpl implements MineService {
     }
 
     @Override
-    public MineInfo getMineInfoById(int id) {
-        MineInfo mineInfo = new MineInfo();
-        Mine mine = mineMapper.selectByPrimaryKey(id);
-        mineInfo.setMine(mine);
-
-        /*List<MinePraise> minePraiseList = minePraiseMapper.selectById(id);
-        List<MineComments> mineCommentsList = mineCommentsMapper.selectById(id);
-        mineInfo.setMine(mine);
-        if (minePraiseList != null && !minePraiseList.isEmpty())
-            mineInfo.setMinePraiseList(minePraiseList);
-        if (mineCommentsList != null && !mineCommentsList.isEmpty())
-            mineInfo.setMineComments(mineCommentsList);*/
-        return mineInfo;
+    public Mine getMineById(int id) {
+        return mineMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public List<MineInfo> getMineInfo() {
-        return null;
+    public List<Mine> mineMapper() {
+        return mineMapper.selectAll();
     }
+
+    @Override
+    public List<MinePraise> getPraise(int id) {
+        return minePraiseMapper.selectById(id);
+    }
+
+    @Override
+    public String getNick(String account) {
+        return interfinalAccountMapper.selectByAccountNo(account).getNick();
+    }
+
+    @Override
+    public MinePraise checkPraise(MinePraise minePraise) {
+        return minePraiseMapper.selectByIdAccount(minePraise);
+    }
+
 }

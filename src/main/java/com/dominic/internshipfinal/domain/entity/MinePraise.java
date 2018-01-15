@@ -10,6 +10,14 @@ public class MinePraise implements Serializable {
 
     private Date submitTime;
 
+
+    public MinePraise () {}
+
+    public MinePraise(Integer mineInfoId, String account) {
+        this.mineInfoId = mineInfoId;
+        this.account = account;
+    }
+
     public Integer getMineInfoId() {
         return mineInfoId;
     }

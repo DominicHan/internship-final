@@ -43,4 +43,13 @@
     from mine_praise
     where mine_info_id = #{mine_info_id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByIdAccount" resultMap="BaseResultMap" parameterType="com.dominic.internshipfinal.domain.entity.MinePraise" >
+    select *
+    from mine_praise
+    <where>
+      <if test="mineInfoId != null and mineInfoId != ''">mine_info_id = #{mineInfoId}</if>
+      <if test="account != null and account != ''">and account=#{account}</if>
+    </where>
+  </select>
 </mapper>

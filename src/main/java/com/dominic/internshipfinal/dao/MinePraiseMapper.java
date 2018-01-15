@@ -10,4 +10,6 @@ public interface MinePraiseMapper {
     int insertSelective(MinePraise record);
 
     List<MinePraise> selectById(int id);
+
+    MinePraise selectByIdAccount(MinePraise minePraise);
 }
