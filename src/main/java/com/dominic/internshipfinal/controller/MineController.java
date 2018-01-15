@@ -63,6 +63,24 @@ public class MineController {
         }
     }
 
+    @RequestMapping(value = "/mine/deletePraise", method = RequestMethod.POST)
+    @LoggerManage(description = "取消点赞")
+    public Response deletePraise(HttpServletRequest request) {
+        try {
+            String mineInfoId = request.getParameter("id");
+            String account = request.getParameter("account");
+            mineService.deletePraise(new MinePraise(Integer.parseInt(mineInfoId), account));
+            List<String> nickList = new ArrayList<>();
+            List<MinePraise> minePraiseList = mineService.getPraise(Integer.parseInt(mineInfoId));
+            for (MinePraise minelist : minePraiseList) {
+                nickList.add(mineService.getNick(minelist.getAccount()));
+            }
+            return new ResponseData(ExceptionMsg.SUCCESS, nickList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response(ExceptionMsg.FAILED);
+        }
+    }
 
     @RequestMapping(value = "/mine/setComments", method = RequestMethod.POST)
     @LoggerManage(description = "评论消息")

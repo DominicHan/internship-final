@@ -52,4 +52,12 @@
       <if test="account != null and account != ''">and account=#{account}</if>
     </where>
   </select>
+
+  <delete id="deleteByIdAccount" parameterType="com.dominic.internshipfinal.domain.entity.MinePraise" >
+    delete from mine_praise
+    <where>
+      <if test="mineInfoId != null and mineInfoId != ''">mine_info_id = #{mineInfoId}</if>
+      <if test="account != null and account != ''">and account=#{account}</if>
+    </where>
+  </delete>
 </mapper>

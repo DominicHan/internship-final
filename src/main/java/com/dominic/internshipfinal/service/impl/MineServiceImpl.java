@@ -40,6 +40,11 @@ public class MineServiceImpl implements MineService {
     }
 
     @Override
+    public void deletePraise(MinePraise minePraise) {
+        minePraiseMapper.deleteByIdAccount(minePraise);
+    }
+
+    @Override
     public void setComments(int mineInfoId, String account, String content) {
         MineComments mineComments = new MineComments();
         mineComments.setMineInfoId(mineInfoId);

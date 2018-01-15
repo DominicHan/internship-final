@@ -12,4 +12,6 @@ public interface MinePraiseMapper {
     List<MinePraise> selectById(int id);
 
     MinePraise selectByIdAccount(MinePraise minePraise);
+
+    void deleteByIdAccount(MinePraise minePraise);
 }

@@ -10,6 +10,8 @@ import java.util.List;
 public interface MineService {
     // 给消息点赞
     void setPraise(int mineInfoId, String account);
+    // 取消消息点赞
+    void deletePraise(MinePraise minePraise);
     // 给消息评论
     void setComments(int mineInfoId, String account, String content);
     // 根据消息id获取消息信息
