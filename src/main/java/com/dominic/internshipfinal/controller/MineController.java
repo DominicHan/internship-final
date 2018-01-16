@@ -19,11 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class MineController {
-
-    private List<String> picList = new ArrayList<>();
 
     @Autowired
     MineService mineService;
@@ -107,9 +106,7 @@ public class MineController {
     @LoggerManage(description = "消息列表")
     public Response getMineInfo(HttpServletRequest request) {
         try {
-            picList.add("http://img.zcool.cn/community/01138f55427d210000019ae9c5bc9e.jpg");
-            picList.add("http://img.zcool.cn/community/01138f55427d210000019ae9c5bc9e.jpg");
-            picList.add("http://img.zcool.cn/community/01138f55427d210000019ae9c5bc9e.jpg");
+            Random random = new Random();
             String account = request.getParameter("account");
             List<MineInfo> mineInfos = new ArrayList<>();
             List<Mine> mines = mineService.mineMapper();
@@ -131,6 +128,12 @@ public class MineController {
                 for (MineComments minelist : commentsList) {
                     mineCommentsInfos.add(new MineCommentsInfo(mineService.getNick(minelist.getAccount()), minelist.getSubmitContent()));
                 }
+                List<String> picList = new ArrayList<>();
+                int y = random.nextInt(6) + 1;
+                for (int i = 0; i < y; i ++) {
+                    picList.add("http://img.zcool.cn/community/01138f55427d210000019ae9c5bc9e.jpg");
+                }
+
                 mineInfo.setMineComments(mineCommentsInfos);
                 mineInfo.setMinePraiseList(nickList);
                 mineInfo.setMine(mine);
