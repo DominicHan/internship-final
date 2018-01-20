@@ -8,6 +8,7 @@ import com.dominic.internshipfinal.domain.result.ExceptionMsg;
 import com.dominic.internshipfinal.domain.result.ResponseData;
 import com.dominic.internshipfinal.service.ClassificationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,7 +44,7 @@ public class ClassificationController {
                     paramValue+=paramValueArr[i]+",";
                 }
             }
-            if (paramName.equals("prices")) {
+            if (paramName.equals("prices") && !StringUtils.isEmpty(paramValue)) {
                 String[] price = paramValue.split("-");
                 map1.put("lowPrices", price[0]);
                 map1.put("highPrices", price[1]);
