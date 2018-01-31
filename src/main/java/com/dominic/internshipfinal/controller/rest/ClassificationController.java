@@ -1,4 +1,4 @@
-package com.dominic.internshipfinal.controller;
+package com.dominic.internshipfinal.controller.rest;
 
 import com.dominic.internshipfinal.comm.aop.LoggerManage;
 import com.dominic.internshipfinal.domain.BrandAndModel;
