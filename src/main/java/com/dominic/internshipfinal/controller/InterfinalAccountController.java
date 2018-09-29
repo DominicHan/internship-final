@@ -1,5 +1,6 @@
 package com.dominic.internshipfinal.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.dominic.internshipfinal.comm.aop.LoggerManage;
 import com.dominic.internshipfinal.domain.entity.InterfinalAccount;
 import com.dominic.internshipfinal.domain.result.ExceptionMsg;
@@ -9,6 +10,8 @@ import com.dominic.internshipfinal.service.InterfinalAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +20,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-@RestController
+@Controller
 public class InterfinalAccountController {
     @Autowired
     InterfinalAccountService interfinalAccountService;
@@ -45,12 +51,69 @@ public class InterfinalAccountController {
         return new ResponseData(ExceptionMsg.SUCCESS, interfinalAccount);
     }
 
+    @RequestMapping("/")
+    public String index() {
+        return "redirect:/list";
+    }
+
+    @RequestMapping("/list")
+    public String list(Model model) {
+        List<InterfinalAccount> users=interfinalAccountService.getUserList();
+        model.addAttribute("users", users);
+        return "user/list";
+    }
+
+    @RequestMapping("/toAdd")
+    public String toAdd() {
+        return "user/userAdd";
+    }
+
+    @RequestMapping("/add")
+    public String add(InterfinalAccount user) {
+        interfinalAccountService.addAccount(user);
+        return "redirect:/list";
+    }
+
+    @RequestMapping("/toEdit")
+    public String toEdit(Model model,int id) {
+        InterfinalAccount user=interfinalAccountService.getAccount(id);
+        model.addAttribute("user", user);
+        return "user/userEdit";
+    }
+
+//    @RequestMapping("/edit")
+//    public String edit(InterfinalAccount user) {
+//        interfinalAccountService.edit(user);
+//        return "redirect:/list";
+//    }
+//
+//
+//    @RequestMapping("/delete")
+//    public String delete(Long id) {
+//        interfinalAccountService.delete(id);
+//        return "redirect:/list";
+//    }
+
     /**
      * 注册
      */
     @RequestMapping(value = "/regist", method = RequestMethod.POST)
     @LoggerManage(description = "注册")
     public Response create(InterfinalAccount account) {
+//        Map map = new HashMap();
+//        float c = 10.00f;
+//        double d = 10.00;
+//        map.put("a", "asd");
+//        map.put("b", "中文zxc阿斯123顿发生发的发发");
+//        map.put("c", c);
+//        map.put("d", d);
+//
+//        //net.sf.json.JSONObject 将Map转换为JSON方法
+//        //JSONUtils.toJSONString(requestMap);
+//
+//        //org.json.JSONObject 将Map转换为JSON方法
+//        JSONObject json =new JSONObject(map);
+//        System.out.println(json);
         try {
             InterfinalAccount registUser = interfinalAccountService.getAccountByAccountNo(account.getAccount());
             if (null != registUser) {

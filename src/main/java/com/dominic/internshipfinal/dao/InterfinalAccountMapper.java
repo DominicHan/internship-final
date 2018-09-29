@@ -2,6 +2,8 @@ package com.dominic.internshipfinal.dao;
 
 import com.dominic.internshipfinal.domain.entity.InterfinalAccount;
 
+import java.util.List;
+
 public interface InterfinalAccountMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -17,4 +19,5 @@ public interface InterfinalAccountMapper {
 
     int updateByPrimaryKey(InterfinalAccount record);
     void updateGpByAccount(InterfinalAccount record);
+    List<InterfinalAccount> selectAll();
 }

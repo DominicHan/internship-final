@@ -12,6 +12,9 @@ public class InternshipFinalApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(InternshipFinalApplication.class, args);
+		System.out.println("----------------------------------------\n" +
+				           "启动成功\n" +
+						   "----------------------------------------\n");
 	}
 
 	@Override

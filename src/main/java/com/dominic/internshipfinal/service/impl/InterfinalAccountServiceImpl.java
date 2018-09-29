@@ -6,6 +6,8 @@ import com.dominic.internshipfinal.service.InterfinalAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class InterfinalAccountServiceImpl implements InterfinalAccountService {
 
@@ -30,5 +32,10 @@ public class InterfinalAccountServiceImpl implements InterfinalAccountService {
     @Override
     public void setGestures(InterfinalAccount account) {
         interfinalAccountMapper.updateGpByAccount(account);
+    }
+
+    @Override
+    public List<InterfinalAccount> getUserList() {
+        return interfinalAccountMapper.selectAll();
     }
 }
